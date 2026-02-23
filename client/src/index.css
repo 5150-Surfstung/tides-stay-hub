@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --radius: 1.125rem;
+
+  --color-background: #071a24;
+  --color-foreground: #eaf4f7;
+  --color-card: rgba(255, 255, 255, 0.04);
+  --color-card-foreground: #eaf4f7;
+  --color-popover: #0b2230;
+  --color-popover-foreground: #eaf4f7;
+  --color-primary: #2aa9b8;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: rgba(255, 255, 255, 0.05);
+  --color-secondary-foreground: #eaf4f7;
+  --color-muted: rgba(255, 255, 255, 0.1);
+  --color-muted-foreground: #cde0e7;
+  --color-accent: rgba(255, 255, 255, 0.06);
+  --color-accent-foreground: #eaf4f7;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.18);
+  --color-input: rgba(0, 0, 0, 0.18);
+  --color-ring: #2aa9b8;
+
+  --color-navy: #0b2230;
+  --color-navy-dark: #071a24;
+  --color-aqua: #2aa9b8;
+  --color-aqua-dark: #1f8390;
+  --color-danger: #ef4444;
+  --color-danger-dark: #b91c1c;
+
+  --shadow-glow: 0 0 20px rgba(42, 169, 184, 0.15);
+}
+
+:root {
+  --background: 200 68% 8%; /* #071a24 */
+  --foreground: 194 45% 94%; /* #eaf4f7 */
+  --card: 200 68% 12%; /* #0b2230 approx */
+  --card-foreground: 194 45% 94%;
+  --popover: 200 68% 12%;
+  --popover-foreground: 194 45% 94%;
+  --primary: 186 63% 44%; /* #2aa9b8 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 200 68% 16%;
+  --secondary-foreground: 194 45% 94%;
+  --muted: 200 68% 16%;
+  --muted-foreground: 193 30% 85%; /* #cde0e7 */
+  --accent: 200 68% 18%;
+  --accent-foreground: 194 45% 94%;
+  --destructive: 0 84% 60%; /* #ef4444 */
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 100% / 0.18;
+  --input: 0 0% 0% / 0.18;
+  --ring: 186 63% 44%;
+  --radius: 1.125rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+  html {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    @apply font-sans antialiased bg-[linear-gradient(180deg,#0b2230,#071a24)] text-foreground min-h-screen;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    touch-action: manipulation;
+    -webkit-overflow-scrolling: touch;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+  input, select, textarea, button {
+    font-size: 16px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes shimmer-border {
+  0%, 100% { border-color: rgba(42, 169, 184, 0.3); }
+  50% { border-color: rgba(42, 169, 184, 0.7); }
+}
+
+@keyframes wave-drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes soft-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(42, 169, 184, 0.08); }
+  50% { box-shadow: 0 0 16px rgba(42, 169, 184, 0.18); }
+}
+
+.animate-shimmer-border {
+  animation: shimmer-border 3s ease-in-out infinite;
+}
+
+.animate-wave-drift {
+  animation: wave-drift 8s linear infinite;
+}
+
+.animate-soft-glow {
+  animation: soft-glow 4s ease-in-out infinite;
+}

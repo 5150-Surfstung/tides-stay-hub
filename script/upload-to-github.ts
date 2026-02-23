@@ -68,32 +68,29 @@ async function main() {
     tree,
   });
 
+  const { data: mainRef } = await octokit.git.getRef({
+    owner: OWNER,
+    repo: REPO,
+    ref: 'heads/main',
+  });
+
   console.log('Creating commit...');
   const { data: commit } = await octokit.git.createCommit({
     owner: OWNER,
     repo: REPO,
     message: 'Tides Folly Beach Stay Hub - full project',
     tree: newTree.sha,
-    parents: [],
+    parents: [mainRef.object.sha],
   });
 
-  console.log('Setting main branch...');
-  try {
-    await octokit.git.createRef({
-      owner: OWNER,
-      repo: REPO,
-      ref: 'refs/heads/main',
-      sha: commit.sha,
-    });
-  } catch {
-    await octokit.git.updateRef({
-      owner: OWNER,
-      repo: REPO,
-      ref: 'heads/main',
-      sha: commit.sha,
-      force: true,
-    });
-  }
+  console.log('Updating main branch...');
+  await octokit.git.updateRef({
+    owner: OWNER,
+    repo: REPO,
+    ref: 'heads/main',
+    sha: commit.sha,
+    force: true,
+  });
 
   console.log(`\nDone! Your code is live at: https://github.com/${OWNER}/${REPO}`);
 }

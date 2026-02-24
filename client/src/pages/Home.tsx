@@ -13,6 +13,10 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { weddingPackages, weddingAddOns, navItems, avocetProperties } from "@/data/constants";
+import DirectionsModal from "@/components/modals/DirectionsModal";
+import InstallGuideModal from "@/components/modals/InstallGuideModal";
+import GuestGateModal from "@/components/modals/GuestGateModal";
+import PushPromptBanner from "@/components/modals/PushPromptBanner";
 import tidesHero from "@assets/IMG_2823_1771852254855.jpeg";
 
 export default function Home() {
@@ -2327,359 +2331,28 @@ export default function Home() {
 
       <AnimatePresence>
         {showDirections && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-4"
-            onClick={() => setShowDirections(false)}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 40 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-[#0d2a3a] border border-border rounded-2xl p-5 w-full max-w-sm"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-base font-extrabold text-white">Leaving Stay Hub</h3>
-              </div>
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                This will open <span className="text-white font-semibold">Google Maps</span> for turn-by-turn directions back to Tides. To come back here, just tap the <span className="text-white font-semibold">Stay Hub icon</span> on your home screen.
-              </p>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setShowDirections(false)}
-                  className="flex-1 py-2.5 rounded-xl border border-border text-sm font-bold text-white hover:bg-white/5 transition-colors"
-                  data-testid="button-directions-cancel"
-                >
-                  Stay Here
-                </button>
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=Tides+Folly+Beach,+1+Center+Street,+Folly+Beach,+SC+29439"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setShowDirections(false)}
-                  className="flex-1 py-2.5 rounded-xl bg-primary text-white text-sm font-bold text-center hover:bg-primary/90 transition-colors"
-                  data-testid="button-directions-confirm"
-                >
-                  Get Directions <ExternalLink className="w-3 h-3 opacity-50 inline ml-1" />
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
+          <DirectionsModal onClose={() => setShowDirections(false)} />
         )}
 
         {showInstallGuide && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4"
-            onClick={() => setShowInstallGuide(false)}
-          >
-            <motion.div
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 100, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-[#0d2a3a] border border-border rounded-t-3xl sm:rounded-3xl w-full max-w-md max-h-[85vh] overflow-y-auto"
-            >
-              <div className="sticky top-0 bg-[#0d2a3a] border-b border-border/50 px-5 py-4 flex items-center justify-between rounded-t-3xl z-10">
-                <div className="flex items-center gap-2">
-                  <Smartphone className="w-5 h-5 text-primary" />
-                  <h2 className="text-lg font-bold text-white font-display">Save to Home Screen</h2>
-                </div>
-                <button onClick={() => setShowInstallGuide(false)} className="text-muted-foreground hover:text-white transition-colors p-1" data-testid="button-close-install-guide">
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="px-5 py-5 space-y-6">
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Add this app to your home screen for instant access — just like a regular app. No download from the app store needed!
-                </p>
-
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-8 h-8 rounded-full bg-[#007AFF]/20 flex items-center justify-center">
-                      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#007AFF]" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                    </div>
-                    <h3 className="font-bold text-white text-sm">iPhone / iPad (Safari)</h3>
-                  </div>
-                  <div className="space-y-3 pl-2">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-primary text-xs font-bold">1</span>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Tap the <span className="inline-flex items-center gap-1 text-[#007AFF] font-semibold"><Share className="w-3.5 h-3.5" /> Share</span> button at the bottom of Safari
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-primary text-xs font-bold">2</span>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Scroll down and tap <span className="inline-flex items-center gap-1 text-white font-semibold"><Plus className="w-3.5 h-3.5" /> Add to Home Screen</span>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-primary text-xs font-bold">3</span>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Tap <span className="text-white font-semibold">Add</span> in the top right corner
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="border-t border-border/30" />
-
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-8 h-8 rounded-full bg-[#3DDC84]/20 flex items-center justify-center">
-                      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#3DDC84]" fill="currentColor"><path d="M17.523 2.592l1.487-2.574a.3.3 0 00-.521-.302L17 2.295A8.042 8.042 0 0012 1.058a8.04 8.04 0 00-5 1.237L5.511-.28a.3.3 0 00-.521.302l1.487 2.574A7.588 7.588 0 003 10.408h18a7.591 7.591 0 00-3.477-7.816zM8.5 7.908a1 1 0 110-2 1 1 0 010 2zm7 0a1 1 0 110-2 1 1 0 010 2zM3 11.908v8a2 2 0 002 2h1v3a1.5 1.5 0 003 0v-3h6v3a1.5 1.5 0 003 0v-3h1a2 2 0 002-2v-8H3zm-2.5 0a1.5 1.5 0 00-1.5 1.5v5a1.5 1.5 0 003 0v-5a1.5 1.5 0 00-1.5-1.5zm23 0a1.5 1.5 0 00-1.5 1.5v5a1.5 1.5 0 003 0v-5a1.5 1.5 0 00-1.5-1.5z"/></svg>
-                    </div>
-                    <h3 className="font-bold text-white text-sm">Android / Samsung (Chrome)</h3>
-                  </div>
-                  <div className="space-y-3 pl-2">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-primary text-xs font-bold">1</span>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Tap the <span className="inline-flex items-center gap-1 text-white font-semibold"><MoreVertical className="w-3.5 h-3.5" /> three dots</span> menu in the top right of Chrome
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-primary text-xs font-bold">2</span>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Tap <span className="inline-flex items-center gap-1 text-white font-semibold"><Download className="w-3.5 h-3.5" /> Add to Home screen</span> or <span className="text-white font-semibold">Install app</span>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-primary text-xs font-bold">3</span>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Tap <span className="text-white font-semibold">Add</span> or <span className="text-white font-semibold">Install</span> to confirm
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="border-t border-border/30" />
-
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-8 h-8 rounded-full bg-[#FF6600]/20 flex items-center justify-center">
-                      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#FF6600]" fill="currentColor"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 1.5c4.687 0 8.5 3.813 8.5 8.5s-3.813 8.5-8.5 8.5S3.5 16.687 3.5 12 7.313 3.5 12 3.5zM8 10.5L12 6l4 4.5h-3V15H11v-4.5H8z"/></svg>
-                    </div>
-                    <h3 className="font-bold text-white text-sm">Samsung Internet Browser</h3>
-                  </div>
-                  <div className="space-y-3 pl-2">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-primary text-xs font-bold">1</span>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Tap the <span className="text-white font-semibold">menu icon</span> (three lines) at the bottom right
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-primary text-xs font-bold">2</span>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Tap <span className="inline-flex items-center gap-1 text-white font-semibold"><Plus className="w-3.5 h-3.5" /> Add page to</span> then select <span className="text-white font-semibold">Home screen</span>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-primary text-xs font-bold">3</span>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Tap <span className="text-white font-semibold">Add</span> to confirm
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-primary/10 border border-primary/20 rounded-xl p-4 mt-2">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      Once saved, the app will appear on your home screen like any other app. It loads instantly and works even without Wi-Fi!
-                    </p>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => setShowInstallGuide(false)}
-                  className="w-full py-3 rounded-xl bg-primary text-white font-semibold text-sm hover:bg-primary/90 transition-all active:scale-[0.98]"
-                  data-testid="button-got-it-install"
-                >
-                  Got It!
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
+          <InstallGuideModal onClose={() => setShowInstallGuide(false)} />
         )}
 
         {showGuestGate && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-4"
-            onClick={() => { setShowGuestGate(false); setGuestGateAction(null); }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 40 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-[#0d2a3a] border-2 border-border rounded-2xl p-5 w-full max-w-sm mb-safe"
-              style={{ maxHeight: "calc(100vh - 2rem)", overflowY: "auto", WebkitOverflowScrolling: "touch" }}
-            >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
-                  <Shield className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-extrabold text-white">Guest Verification</h3>
-                  <p className="text-xs text-muted-foreground">Quick check — for hotel guests only</p>
-                </div>
-              </div>
-              <div className="space-y-4 mb-5">
-                <div>
-                  <label className="text-sm font-bold text-white/70 mb-1.5 block">Last Name</label>
-                  <input
-                    type="text"
-                    autoComplete="family-name"
-                    enterKeyHint="next"
-                    value={guestName}
-                    onChange={(e) => setGuestName(e.target.value)}
-                    placeholder="Last name on reservation"
-                    className="w-full px-4 py-3.5 rounded-xl bg-white/5 border-2 border-border text-white text-base placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50"
-                    data-testid="input-guest-name"
-                    autoFocus
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-bold text-white/70 mb-1.5 block">Room Number</label>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                    autoComplete="off"
-                    enterKeyHint="go"
-                    value={guestRoom}
-                    onChange={(e) => setGuestRoom(e.target.value)}
-                    placeholder="e.g. 301"
-                    className="w-full px-4 py-3.5 rounded-xl bg-white/5 border-2 border-border text-white text-base placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50"
-                    data-testid="input-guest-room"
-                    onKeyDown={(e) => { if (e.key === "Enter") handleGuestVerify(); }}
-                  />
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <button
-                  onClick={() => { setShowGuestGate(false); setGuestGateAction(null); }}
-                  className="flex-1 py-3.5 rounded-xl border-2 border-border text-base font-bold text-white hover:bg-white/5 transition-colors active:scale-[0.97]"
-                  data-testid="button-guest-gate-cancel"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleGuestVerify}
-                  disabled={!guestName.trim() || !guestRoom.trim()}
-                  className="flex-1 py-3.5 rounded-xl bg-primary border-2 border-primary text-white text-base font-bold hover:bg-primary/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.97]"
-                  data-testid="button-guest-gate-verify"
-                >
-                  Continue
-                </button>
-              </div>
-              <a
-                href="tel:+18885280730"
-                className="flex items-center justify-center gap-2 w-full py-3.5 mt-3 rounded-xl bg-primary/15 border-2 border-primary/30 text-primary font-bold text-base hover:bg-primary/25 transition-all active:scale-[0.97]"
-                data-testid="link-call-frontdesk-gate"
-              >
-                <Phone className="w-5 h-5" />
-                Call Front Desk
-              </a>
-              <div className="mt-5 pt-4 border-t border-border/50">
-                <p className="text-xs text-muted-foreground text-center mb-2.5">Not a guest?</p>
-                <a
-                  href="https://www.tidesfollybeach.com/offers/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-white/5 border-2 border-border text-primary font-bold text-sm hover:bg-white/10 transition-all active:scale-[0.97]"
-                  data-testid="link-book-stay"
-                >
-                  <CalendarCheck className="w-4 h-4" />
-                  Book Your Stay at Tides
-                  <ExternalLink className="w-3 h-3 opacity-50" />
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
+          <GuestGateModal
+            guestName={guestName}
+            guestRoom={guestRoom}
+            onGuestNameChange={setGuestName}
+            onGuestRoomChange={setGuestRoom}
+            onVerify={handleGuestVerify}
+            onClose={() => { setShowGuestGate(false); setGuestGateAction(null); }}
+          />
         )}
       </AnimatePresence>
 
       <AnimatePresence>
         {showPushPrompt && pushStatus === "idle" && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-4 left-4 right-4 max-w-lg mx-auto z-50"
-            data-testid="push-prompt"
-          >
-            <div className="bg-[#0d2a3a] border border-primary/30 rounded-2xl p-4 shadow-2xl shadow-black/50">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
-                  <Bell className="w-5 h-5 text-primary" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-extrabold text-white text-sm">Get flash deals & specials?</div>
-                  <div className="text-xs text-muted-foreground mt-0.5">We'll send you exclusive deals during your stay. No spam — just savings.</div>
-                </div>
-                <button
-                  onClick={handlePushDismiss}
-                  className="text-white/40 hover:text-white/60 shrink-0"
-                  data-testid="button-push-dismiss"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-              <div className="flex gap-2 mt-3">
-                <button
-                  onClick={handlePushAccept}
-                  className="flex-1 py-2.5 rounded-xl bg-primary text-white font-bold text-sm hover:bg-primary/90 transition-all active:scale-[0.98]"
-                  data-testid="button-push-accept"
-                >
-                  Yes, notify me
-                </button>
-                <button
-                  onClick={handlePushDismiss}
-                  className="px-4 py-2.5 rounded-xl bg-white/5 border border-border text-white/60 font-bold text-sm hover:bg-white/10 transition-all active:scale-[0.98]"
-                  data-testid="button-push-reject"
-                >
-                  No thanks
-                </button>
-              </div>
-            </div>
-          </motion.div>
+          <PushPromptBanner onAccept={handlePushAccept} onDismiss={handlePushDismiss} />
         )}
       </AnimatePresence>
     </div>

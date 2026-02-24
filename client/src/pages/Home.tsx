@@ -33,22 +33,18 @@ import {
   Plus,
   Smartphone,
   Star,
-  Crown,
   Gift,
   Clock,
   Mail,
-  ArrowRight,
   CalendarCheck,
   Wifi,
   Users,
   Trophy,
   Shield,
   MapPin,
-  ThumbsUp,
   Video,
   Tag,
   Flame,
-  Percent,
   Sun,
   Cloud,
   CloudRain,
@@ -64,11 +60,9 @@ import {
   ArrowDown,
   Eye,
   Bell,
-  BellOff
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import tidesLogo from "@/assets/images/tides-logo.webp";
 import tidesHero from "@assets/IMG_2823_1771852254855.jpeg";
 
 export default function Home() {
@@ -78,8 +72,6 @@ export default function Home() {
   const [showInstallGuide, setShowInstallGuide] = useState(false);
   const [insiderEmail, setInsiderEmail] = useState("");
   const [insiderSent, setInsiderSent] = useState(false);
-  const [showOffers, setShowOffers] = useState(false);
-  const [showInsider, setShowInsider] = useState(false);
   const [showDirections, setShowDirections] = useState(false);
   const [isInstallable, setIsInstallable] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
@@ -353,40 +345,6 @@ export default function Home() {
       setGuestRoom("");
       setGuestGateAction(null);
     }
-  };
-
-  const handlePanic = () => {
-    const PANIC_NUMBER = "+18885280730";
-    const ok = window.confirm("Emergency Assistance\n\nThis will call the hotel directly for urgent help.\nProceed?");
-    if (ok) window.location.href = `tel:${PANIC_NUMBER}`;
-  };
-
-  const handleInquirySubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const SALES_EMAIL = "weddings@tidesfollybeach.com";
-    
-    const payload = {
-      name: fd.get("name") as string,
-      phone: fd.get("phone") as string,
-      email: fd.get("email") as string,
-      type: fd.get("type") as string,
-      date: fd.get("date") as string,
-      guests: fd.get("guests") as string,
-      budget: fd.get("budget") as string,
-      notes: fd.get("notes") as string,
-      source: "Tides Stay Hub"
-    };
-
-    const enc = (s: string) => encodeURIComponent(String(s || "").trim());
-
-    const packageInfo = selectedPackage !== null ? `\nSelected Package: ${weddingPackages[selectedPackage].name} (${weddingPackages[selectedPackage].priceRange})` : "";
-    const addOnInfo = selectedAddOns.length > 0 ? `\nInterested Add-Ons: ${weddingAddOns.filter(a => selectedAddOns.includes(a.id)).map(a => a.label).join(", ")}` : "";
-
-    const subject = `${payload.type} Inquiry — Tides Folly Beach`;
-    const body = `New Inquiry\n\nName: ${payload.name}\nPhone: ${payload.phone || "—"}\nEmail: ${payload.email || "—"}\n\nType: ${payload.type}\nPreferred Date: ${payload.date || "—"}\nEstimated Guests: ${payload.guests || "—"}\nBudget: ${payload.budget || "—"}${packageInfo}${addOnInfo}\n\nNotes:\n${payload.notes || "—"}\n\nSource: ${payload.source}`;
-
-    window.location.href = `mailto:${enc(SALES_EMAIL)}?subject=${enc(subject)}&body=${enc(body)}`;
   };
 
   const handleInsiderSignup = () => {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Send, Users, ArrowLeft, Bell, CheckCircle2, AlertCircle } from "lucide-react";
 import { Link } from "wouter";
 
@@ -30,7 +30,7 @@ export default function Admin() {
     }
   };
 
-  const refreshStats = async () => {
+  const refreshStats = useCallback(async () => {
     try {
       const res = await fetch("/api/push/stats", {
         headers: { "x-admin-key": adminKey },
@@ -40,7 +40,7 @@ export default function Admin() {
         setSubscribers(data.subscribers);
       }
     } catch {}
-  };
+  }, [adminKey]);
 
   useEffect(() => {
     if (authenticated) {
@@ -48,7 +48,7 @@ export default function Admin() {
       const interval = setInterval(refreshStats, 30000);
       return () => clearInterval(interval);
     }
-  }, [authenticated]);
+  }, [authenticated, refreshStats]);
 
   const sendNotification = async () => {
     if (!title.trim() || !body.trim()) {

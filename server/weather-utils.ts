@@ -46,7 +46,7 @@ export function getUvLevel(uv: number): { label: string; color: string } {
 }
 
 export function getTideEstimate(
-  lat: number,
+  _lat: number,
   _lon: number,
 ): { nextHigh: string; nextLow: string; current: string } {
   const now = new Date();

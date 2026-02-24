@@ -29,7 +29,7 @@ export default function Home() {
   const [photoChallenge, togglePhoto, resetPhotos] = usePersistedRecord("tides_photos");
   const [teenChallenges, toggleTeenChallenge, resetTeenChallenges] = usePersistedRecord("tides_teen_challenges");
   const totalActivities = Object.values(scavengerItems).filter(Boolean).length + Object.values(bingoItems).filter(Boolean).length + Object.values(sandcastleParts).filter(Boolean).length + Object.values(shellCollection).filter(Boolean).length + Object.values(photoChallenge).filter(Boolean).length + Object.values(teenChallenges).filter(Boolean).length;
-  const badgeLevel = totalActivities >= 21 ? { name: "Tides Legend", emoji: "👑" } : totalActivities >= 13 ? { name: "Beach Captain", emoji: "⚓" } : totalActivities >= 6 ? { name: "Sand Dollar Explorer", emoji: "🏖️" } : { name: "Tide Scout", emoji: "🐚" };
+  const badgeLevel = totalActivities >= 21 ? { name: "Folly Legend", emoji: "👑" } : totalActivities >= 13 ? { name: "Beach Captain", emoji: "⚓" } : totalActivities >= 6 ? { name: "Sand Dollar Explorer", emoji: "🏖️" } : { name: "Tide Scout", emoji: "🐚" };
   const resetAllKids = () => {
     resetScavenger(); resetBingo(); resetSandcastle(); resetShells(); resetPhotos(); resetTeenChallenges();
   };
@@ -247,7 +247,7 @@ export default function Home() {
 
                   <div className="flex border-t border-primary/20">
                     <a
-                      href="https://www.tidesfollybeach.com/surf-cam/"
+                      href="https://www.surfline.com/surf-report/folly-beach-pier/5842041f4e65fad6a7708a65"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 flex items-center justify-center gap-2 py-3 text-xs font-bold text-primary hover:bg-primary/10 transition-colors"
@@ -265,7 +265,7 @@ export default function Home() {
 
         <div className="grid grid-cols-2 gap-2">
           <a
-            href="https://www.tidesfollybeach.com/surf-cam/"
+            href="https://www.surfline.com/surf-report/folly-beach-pier/5842041f4e65fad6a7708a65"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center justify-center gap-1 p-3 rounded-xl bg-[#1a1a2e] border-2 border-red-500/40 hover:bg-[#1a1a2e]/80 transition-all active:scale-[0.98]"
@@ -499,7 +499,7 @@ export default function Home() {
                             { item: "Find a seashell on the beach", emoji: "🐚" },
                             { item: "Spot a pelican flying overhead", emoji: "🦅" },
                             { item: "Dig your toes in the sand", emoji: "👣" },
-                            { item: "Find the hotel pool", emoji: "🏊" },
+                            { item: "Find a sand dollar", emoji: "🪙" },
                             { item: "Watch a wave crash on shore", emoji: "🌊" },
                             { item: "Find a piece of driftwood", emoji: "🪵" },
                             { item: "Spot a crab on the beach", emoji: "🦀" },

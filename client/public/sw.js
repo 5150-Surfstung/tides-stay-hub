@@ -3,7 +3,7 @@
  * Network-first for pages/scripts so republished changes appear immediately.
  * Falls back to cache when offline.
  */
-const CACHE_NAME = "tides-stayhub-v10";
+const CACHE_NAME = "folly-hub-v1";
 const PRECACHE = [
   "/",
   "/index.html",
@@ -70,7 +70,7 @@ self.addEventListener("fetch", (event) => {
 });
 
 self.addEventListener("push", (event) => {
-  let data = { title: "Tides Folly Beach", body: "You have a new deal!", url: "/" };
+  let data = { title: "The Folly Hub", body: "You have a new update!", url: "/" };
   try {
     if (event.data) {
       data = { ...data, ...event.data.json() };

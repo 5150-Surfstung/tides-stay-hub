@@ -25,10 +25,10 @@ export default function DirectionsModal({ onClose }: DirectionsModalProps) {
           <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
             <MapPin className="w-5 h-5 text-primary" />
           </div>
-          <h3 className="text-base font-extrabold text-white">Leaving Stay Hub</h3>
-        </div>
-        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-          This will open <span className="text-white font-semibold">Google Maps</span> for turn-by-turn directions back to Tides. To come back here, just tap the <span className="text-white font-semibold">Stay Hub icon</span> on your home screen.
+                <h3 className="text-base font-extrabold text-white">Leaving Folly Hub</h3>
+              </div>
+              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                This will open <span className="text-white font-semibold">Google Maps</span> for directions to Folly Beach. To come back here, just tap the <span className="text-white font-semibold">Folly Hub icon</span> on your home screen.
         </p>
         <div className="flex gap-2">
           <button
@@ -39,7 +39,7 @@ export default function DirectionsModal({ onClose }: DirectionsModalProps) {
             Stay Here
           </button>
           <a
-            href="https://www.google.com/maps/dir/?api=1&destination=Tides+Folly+Beach,+1+Center+Street,+Folly+Beach,+SC+29439"
+                  href="https://www.google.com/maps/dir/?api=1&destination=Folly+Beach,+SC"
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}

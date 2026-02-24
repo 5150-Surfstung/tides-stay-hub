@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { usePersistedRecord } from "@/hooks/use-persisted-state";
 import { 
   Phone, MessageCircle, AlertTriangle, Utensils, Building2, X,
   ExternalLink, ChevronRight, Anchor, Sailboat, Music, Sunrise,
@@ -39,40 +40,16 @@ export default function Home() {
   const [showPushPrompt, setShowPushPrompt] = useState(false);
   const [pushStatus, setPushStatus] = useState<"idle" | "subscribed" | "denied" | "dismissed">("idle");
   const [kidsTab, setKidsTab] = useState<"kids" | "teens">("kids");
-  const [scavengerItems, setScavengerItems] = useState<Record<string, boolean>>(() => {
-    try { const s = localStorage.getItem("tides_scavenger"); return s ? JSON.parse(s) : {}; } catch { return {}; }
-  });
-  const [bingoItems, setBingoItems] = useState<Record<string, boolean>>(() => {
-    try { const s = localStorage.getItem("tides_bingo"); return s ? JSON.parse(s) : {}; } catch { return {}; }
-  });
-  const [sandcastleParts, setSandcastleParts] = useState<Record<string, boolean>>(() => {
-    try { const s = localStorage.getItem("tides_sandcastle"); return s ? JSON.parse(s) : {}; } catch { return {}; }
-  });
-  const [shellCollection, setShellCollection] = useState<Record<string, boolean>>(() => {
-    try { const s = localStorage.getItem("tides_shells"); return s ? JSON.parse(s) : {}; } catch { return {}; }
-  });
-  const [photoChallenge, setPhotoChallenge] = useState<Record<string, boolean>>(() => {
-    try { const s = localStorage.getItem("tides_photos"); return s ? JSON.parse(s) : {}; } catch { return {}; }
-  });
-  const [teenChallenges, setTeenChallenges] = useState<Record<string, boolean>>(() => {
-    try { const s = localStorage.getItem("tides_teen_challenges"); return s ? JSON.parse(s) : {}; } catch { return {}; }
-  });
-  const toggleState = (state: Record<string, boolean>, setter: (v: Record<string, boolean>) => void, lsKey: string, item: string) => {
-    const next = { ...state, [item]: !state[item] };
-    setter(next);
-    try { localStorage.setItem(lsKey, JSON.stringify(next)); } catch {}
-  };
-  const toggleScavenger = (item: string) => toggleState(scavengerItems, setScavengerItems, "tides_scavenger", item);
-  const toggleBingo = (item: string) => toggleState(bingoItems, setBingoItems, "tides_bingo", item);
-  const toggleSandcastle = (item: string) => toggleState(sandcastleParts, setSandcastleParts, "tides_sandcastle", item);
-  const toggleShell = (item: string) => toggleState(shellCollection, setShellCollection, "tides_shells", item);
-  const togglePhoto = (item: string) => toggleState(photoChallenge, setPhotoChallenge, "tides_photos", item);
-  const toggleTeenChallenge = (item: string) => toggleState(teenChallenges, setTeenChallenges, "tides_teen_challenges", item);
+  const [scavengerItems, toggleScavenger, resetScavenger] = usePersistedRecord("tides_scavenger");
+  const [bingoItems, toggleBingo, resetBingo] = usePersistedRecord("tides_bingo");
+  const [sandcastleParts, toggleSandcastle, resetSandcastle] = usePersistedRecord("tides_sandcastle");
+  const [shellCollection, toggleShell, resetShells] = usePersistedRecord("tides_shells");
+  const [photoChallenge, togglePhoto, resetPhotos] = usePersistedRecord("tides_photos");
+  const [teenChallenges, toggleTeenChallenge, resetTeenChallenges] = usePersistedRecord("tides_teen_challenges");
   const totalActivities = Object.values(scavengerItems).filter(Boolean).length + Object.values(bingoItems).filter(Boolean).length + Object.values(sandcastleParts).filter(Boolean).length + Object.values(shellCollection).filter(Boolean).length + Object.values(photoChallenge).filter(Boolean).length + Object.values(teenChallenges).filter(Boolean).length;
   const badgeLevel = totalActivities >= 21 ? { name: "Tides Legend", emoji: "👑" } : totalActivities >= 13 ? { name: "Beach Captain", emoji: "⚓" } : totalActivities >= 6 ? { name: "Sand Dollar Explorer", emoji: "🏖️" } : { name: "Tide Scout", emoji: "🐚" };
   const resetAllKids = () => {
-    setScavengerItems({}); setBingoItems({}); setSandcastleParts({}); setShellCollection({}); setPhotoChallenge({}); setTeenChallenges({});
-    try { ["tides_scavenger","tides_bingo","tides_sandcastle","tides_shells","tides_photos","tides_teen_challenges"].forEach(k => localStorage.removeItem(k)); } catch {}
+    resetScavenger(); resetBingo(); resetSandcastle(); resetShells(); resetPhotos(); resetTeenChallenges();
   };
   const [guestVerified, setGuestVerified] = useState(() => {
     try { return localStorage.getItem("tides_guest_verified") === "true"; } catch { return false; }

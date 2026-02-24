@@ -10,16 +10,26 @@ This is **Tides Folly Beach Stay Hub** — a full-stack TypeScript PWA (React + 
 
 | Service | How to run | Notes |
 |---------|-----------|-------|
-| **Dev server** (Express + Vite HMR) | `DATABASE_URL="postgresql://devuser:devpass@localhost:5432/tidesapp" npm run dev` | Serves API + frontend on port 5000 |
+| **Dev server** (Express + Vite HMR) | `npm run dev` | Reads `.env` automatically; serves API + frontend on port 5000 |
 | **PostgreSQL** | `sudo pg_ctlcluster 16 main start` | Must be running before the dev server starts |
+
+### Commands
+
+| Task | Command |
+|------|---------|
+| Dev server | `npm run dev` |
+| TypeScript check | `npm run check` |
+| Lint | `npm run lint` |
+| Lint + autofix | `npm run lint:fix` |
+| Tests | `npm run test` |
+| Schema push | `npm run db:push` |
 
 ### Non-obvious caveats
 
 - **PostgreSQL must be started manually** before running the dev server: `sudo pg_ctlcluster 16 main start`
-- **DATABASE_URL must be set** as an environment variable — the server crashes without it. Dev value: `postgresql://devuser:devpass@localhost:5432/tidesapp`
-- **Schema push**: After first DB setup, run `DATABASE_URL="..." npm run db:push` to create tables via Drizzle ORM.
-- **`attached_assets/` directory**: The repo references `@assets/IMG_2823_1771852254855.jpeg` via a Vite alias pointing to `attached_assets/`. This directory is not committed (likely a Replit artifact). Create a placeholder JPEG if missing to avoid Vite import errors.
-- **No lint script**: There is no ESLint setup. The only static check is `npm run check` (TypeScript `tsc`), which has one pre-existing error about missing `web-push` type declarations.
-- **No test suite**: The project has no automated tests.
-- **VAPID keys** (optional): Push notifications require `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, and `ADMIN_PUSH_KEY` env vars. Without them, push features degrade gracefully.
+- **`.env` file**: The dev scripts use Node.js `--env-file-if-exists=.env` to load environment variables. Copy `.env.example` to `.env` if it doesn't exist. The `.env` file is gitignored.
+- **Schema push**: After first DB setup, run `npm run db:push` to create tables via Drizzle ORM. It reads `DATABASE_URL` from `.env`.
+- **`attached_assets/` directory**: The repo references `@assets/IMG_2823_1771852254855.jpeg` via a Vite alias pointing to `attached_assets/`. This directory may not be committed (Replit artifact). Create a placeholder JPEG if missing to avoid Vite import errors.
+- **VAPID keys**: Push notifications require `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, and `ADMIN_PUSH_KEY` in `.env`. Generate fresh keys with `npx web-push generate-vapid-keys`. Without them, push features degrade gracefully.
 - **Weather API**: Uses Open-Meteo (free, no key). Works out of the box with network access.
+- **API integration tests** (`tests/api.test.ts`): Require the dev server to be running on port 5000 before executing `npm run test`.

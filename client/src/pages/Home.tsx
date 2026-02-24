@@ -1,68 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { 
-  Phone, 
-  MessageCircle,
-  AlertTriangle, 
-  Utensils, 
-  Heart, 
-  Waves, 
-  Car, 
-  Map as MapIcon, 
-  Building2, 
-  X,
-  ExternalLink,
-  ChevronRight,
-  Compass,
-  Anchor,
-  Sailboat,
-  Music,
-  Shell,
-  Sunrise,
-  Fish,
-  PawPrint,
-  Coffee,
-  Umbrella,
-  BedDouble,
-  Bath,
-  Sparkles,
-  ConciergeBell,
-  CheckCircle2,
-  Download,
-  Share,
-  MoreVertical,
-  Plus,
-  Smartphone,
-  Star,
-  Gift,
-  Clock,
-  Mail,
-  CalendarCheck,
-  Wifi,
-  Users,
-  Trophy,
-  Shield,
-  MapPin,
-  Video,
-  Tag,
-  Flame,
-  Sun,
-  Cloud,
-  CloudRain,
-  CloudDrizzle,
-  CloudLightning,
-  CloudSun,
-  CloudFog,
-  Snowflake,
-  Wind,
-  Droplets,
-  Thermometer,
-  ArrowUp,
-  ArrowDown,
-  Eye,
-  Bell,
+  Phone, MessageCircle, AlertTriangle, Utensils, Building2, X,
+  ExternalLink, ChevronRight, Anchor, Sailboat, Music, Sunrise,
+  Fish, PawPrint, Coffee, Umbrella, BedDouble, Bath, Sparkles,
+  CheckCircle2, Download, Share, MoreVertical, Plus, Smartphone,
+  Star, Gift, Clock, Mail, CalendarCheck, Wifi, Trophy, Shield,
+  MapPin, Video, Tag, Flame, Sun, Cloud, CloudRain, CloudDrizzle,
+  CloudLightning, CloudSun, CloudFog, Snowflake, Wind, Droplets,
+  Thermometer, ArrowUp, ArrowDown, Eye, Bell, Waves, Heart,
+  Car, Compass, Shell, Users,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { weddingPackages, weddingAddOns, navItems, avocetProperties } from "@/data/constants";
 import tidesHero from "@assets/IMG_2823_1771852254855.jpeg";
 
 export default function Home() {
@@ -128,76 +78,6 @@ export default function Home() {
   const [guestName, setGuestName] = useState("");
   const [guestRoom, setGuestRoom] = useState("");
   const panelRef = useRef<HTMLDivElement>(null);
-
-  const weddingPackages = [
-    {
-      name: "Intimate Beach Ceremony",
-      tagline: "Say \"I do\" with your toes in the sand",
-      guests: "Up to 50 guests",
-      priceRange: "Contact for pricing",
-      venue: "Beach Front Ceremony site",
-      perfectFor: ["Elopements", "Micro-weddings", "Vow renewals"],
-      includes: [
-        "Dedicated sales & catering manager",
-        "Beach ceremony facilitation by hotel staff",
-        "In-house catering & full bar service",
-        "Inclement weather backup space included",
-        "Hotel room available as bridal suite (reservable)",
-        "Rehearsal available day prior (subject to availability)",
-      ],
-    },
-    {
-      name: "Classic Oceanfront Reception",
-      tagline: "The Knot Best of Weddings award-winning venue",
-      guests: "50 – 180 guests",
-      priceRange: "Contact for pricing",
-      venue: "Pavilion Ballroom (2,883 ft²) + Beach Ceremony",
-      popular: true,
-      perfectFor: ["Full wedding day", "Reception + ceremony", "Rehearsal weekends"],
-      includes: [
-        "Everything in Intimate package",
-        "Pavilion Ballroom reception with sweeping ocean views",
-        "Custom floor plan designed to your vision",
-        "Pre-function area with waterfront views",
-        "Juliet balcony access for photos & champagne toasts",
-        "In-house catering — from Lowcountry boil to plated dinners",
-        "Full bar service (all alcohol served by Tides)",
-        "Venue setup & breakdown handled by our team",
-      ],
-    },
-    {
-      name: "Grand Celebration",
-      tagline: "The ultimate Folly Beach destination wedding",
-      guests: "100 – 200 guests",
-      priceRange: "Contact for pricing",
-      venue: "Multiple venues — Pavilion, Shipwatch, Pergola & Beach",
-      perfectFor: ["Destination weddings", "Full wedding weekends", "Multi-day celebrations"],
-      includes: [
-        "Everything in Classic package",
-        "Multiple venue spaces for ceremony, cocktails & reception",
-        "Shipwatch Ballroom (960 ft²) for intimate gatherings",
-        "Pinky's Pergola (1,647 ft²) — floral archway & oceanfront views",
-        "Overnight guest room block at group rates",
-        "Executive chef-curated multi-course menu tasting",
-        "Premium bar packages available",
-        "Beach Bar & Deck access for after-party",
-        "Priority date selection",
-      ],
-    },
-  ];
-
-  const weddingAddOns = [
-    { id: "roomblock", label: "Overnight Guest Room Block", price: "Group rates" },
-    { id: "rehearsal", label: "Rehearsal Dinner at Pinky's or Shipwatch", price: "Ask us" },
-    { id: "brunch", label: "Morning-After Farewell Brunch", price: "Ask us" },
-    { id: "dessert", label: "Specialty Wedding Dessert (outside baker)", price: "Cake-cutting fee" },
-    { id: "cocktailhr", label: "Pierview Cocktail Hour (up to 80 guests)", price: "Ask us" },
-    { id: "pergola", label: "Pinky's Pergola Welcome Party", price: "Ask us" },
-    { id: "beachbar", label: "Beach Bar & Deck After-Party", price: "Ask us" },
-    { id: "bridalroom", label: "Bridal Suite Room Reservation", price: "Room rate" },
-    { id: "extended", label: "Extended Reception Hours", price: "Ask us" },
-    { id: "barpackage", label: "Premium Top-Shelf Bar Upgrade", price: "Ask us" },
-  ];
 
   const toggleAddOn = (id: string) => {
     setSelectedAddOns(prev => prev.includes(id) ? prev.filter(a => a !== id) : [...prev, id]);
@@ -361,17 +241,6 @@ export default function Home() {
     setFrontDeskSent(item);
     setTimeout(() => setFrontDeskSent(null), 4000);
   };
-
-  const navItems = [
-    { id: "frontdesk", label: "Front Desk", icon: ConciergeBell },
-    { id: "thingstodo", label: "Things to Do", icon: Compass },
-    { id: "weddings", label: "Weddings", icon: Heart },
-    { id: "meetings", label: "Meetings", icon: Users },
-    { id: "amenities", label: "Amenities", icon: Waves },
-    { id: "parking", label: "Parking", icon: Car },
-    { id: "folly", label: "Explore Folly", icon: MapIcon },
-    { id: "kids", label: "Kids & Teens", icon: Shell },
-  ];
 
   return (
     <div className="max-w-[860px] mx-auto min-h-screen pb-12">
@@ -2367,12 +2236,7 @@ export default function Home() {
               </summary>
               <div className="px-3 pb-3 space-y-2 pt-1">
                 <p className="text-[11px] text-[#a8c8d4] font-medium">Deals update automatically — always current.</p>
-                {[
-                  { property: "Tides Folly Beach", loc: "Folly Beach, SC", sell: "Oceanfront boutique hotel on Folly Beach — surf, sand, and sunsets steps from your door.", offersUrl: "https://www.tidesfollybeach.com/offers/", siteUrl: "https://www.tidesfollybeach.com/" },
-                  { property: "The Vendue", loc: "Charleston, SC", sell: "Charleston's only art hotel — rooftop bar, gallery tours, and downtown charm.", offersUrl: "https://www.thevendue.com/offers/", siteUrl: "https://www.thevendue.com/" },
-                  { property: "The Read House", loc: "Chattanooga, TN", sell: "Historic landmark hotel in Chattanooga — Lookout Mountain, Ruby Falls, and Southern elegance.", offersUrl: "https://www.thereadhousehotel.com/offers/", siteUrl: "https://www.thereadhousehotel.com/" },
-                  { property: "The Admiral Hotel", loc: "Mobile, AL", sell: "Boutique luxury in downtown Mobile — Gulf Coast hospitality meets modern style.", offersUrl: "https://www.theadmiralhotel.com/offers/", siteUrl: "https://www.theadmiralhotel.com/" },
-                ].map((prop) => (
+                {avocetProperties.map((prop) => (
                   <details key={prop.property} className="bg-white/[0.06] border border-border rounded-xl group/prop" data-testid={`property-${prop.property.toLowerCase().replace(/\s+/g, '-')}`}>
                     <summary className="p-3 cursor-pointer list-none flex items-center justify-between">
                       <div>

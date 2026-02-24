@@ -3,11 +3,11 @@ import {
   Phone, MessageCircle, AlertTriangle, Utensils, Building2, X,
   ExternalLink, ChevronRight, Anchor, Sailboat, Music, Sunrise,
   Fish, PawPrint, Coffee, Umbrella, BedDouble, Bath, Sparkles,
-  CheckCircle2, Download, Share, MoreVertical, Plus, Smartphone,
+  CheckCircle2, Download, Share, Plus,
   Star, Gift, Clock, Mail, CalendarCheck, Wifi, Trophy, Shield,
   MapPin, Video, Tag, Flame, Sun, Cloud, CloudRain, CloudDrizzle,
   CloudLightning, CloudSun, CloudFog, Snowflake, Wind, Droplets,
-  Thermometer, ArrowUp, ArrowDown, Eye, Bell, Waves, Heart,
+  Thermometer, ArrowUp, ArrowDown, Eye, Waves, Heart,
   Car, Compass, Shell, Users,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

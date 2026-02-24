@@ -90,7 +90,7 @@ export default function Admin() {
     <div className="min-h-screen bg-[#0b2230] text-white">
       <div className="max-w-lg mx-auto px-4 py-8">
         <Link href="/" className="inline-flex items-center gap-2 text-primary text-sm font-bold mb-6 hover:underline" data-testid="link-back-home">
-          <ArrowLeft className="w-4 h-4" /> Back to Stay Hub
+          <ArrowLeft className="w-4 h-4" /> Back to Folly Hub
         </Link>
 
         <div className="flex items-center gap-3 mb-6">

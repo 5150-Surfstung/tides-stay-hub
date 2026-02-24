@@ -4,7 +4,7 @@
 
 ### Overview
 
-This is **Tides Folly Beach Stay Hub** — a full-stack TypeScript PWA (React + Express + PostgreSQL) serving as a guest concierge for a hotel property. See `package.json` `scripts` for all available commands.
+This is **The Folly Hub** — a full-stack TypeScript PWA (React + Express + PostgreSQL) serving as a Folly Beach community guide. See `package.json` `scripts` for all available commands.
 
 ### Services
 

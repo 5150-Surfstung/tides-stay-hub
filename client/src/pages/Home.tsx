@@ -344,7 +344,7 @@ export default function Home() {
                 {activePanel === "thingstodo" && (
                   <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Surf, sand, and good vibes — explore everything Folly Beach has to offer.
+                      Surf, sand, and good vibes — everything worth doing on Folly Beach.
                     </p>
 
                     <div>
@@ -352,14 +352,16 @@ export default function Home() {
                         <div className="w-7 h-7 rounded-lg bg-orange-500/20 flex items-center justify-center">
                           <Waves className="w-4 h-4 text-orange-400" />
                         </div>
-                        <h3 className="text-base font-bold text-white">Thrills</h3>
+                        <h3 className="text-base font-bold text-white">Get After It</h3>
                       </div>
                       <div className="space-y-2.5">
                         {[
-                          { icon: Waves, title: "Surf Lessons", desc: "Experience the adrenaline rush of catching a wave. Private surfing lessons for all skill levels — grab your board and get ready!", accent: "text-cyan-400", bg: "bg-cyan-400/10" },
-                          { icon: Fish, title: "Fishing Charters", desc: "Book a private charter and fish our Lowcountry waters with seasoned captains who'll put you on fish no matter the season.", accent: "text-blue-400", bg: "bg-blue-400/10" },
-                          { icon: Anchor, title: "Kayak & Paddleboard Safaris", desc: "Experience the rush that's accessible only by water. Splash across waterways and explore the rich, diverse marine life of Folly Beach.", accent: "text-teal-400", bg: "bg-teal-400/10" },
-                          { icon: Music, title: "Night Life", desc: "Bars and restaurants come alive after dark with live music dotting the island. Dance the night away — and don't forget the Tiki Bar out back.", accent: "text-purple-400", bg: "bg-purple-400/10" }
+                          { icon: Waves, title: "Surfing", desc: "Folly is the best surf break in South Carolina. Consistent swells, warm water, and a laid-back lineup. Lessons available for beginners — rentals are everywhere.", accent: "text-cyan-400", bg: "bg-cyan-400/10" },
+                          { icon: Fish, title: "Fishing", desc: "Cast off the pier, wade the flats at low tide, or book a charter into the deep blue. Redfish, flounder, and sheepshead run year-round.", accent: "text-blue-400", bg: "bg-blue-400/10" },
+                          { icon: Anchor, title: "Kayaking & Paddleboarding", desc: "Explore the creeks and marshes behind the island. Flat water, dolphins popping up next to you, and zero crowds. Rentals available at multiple spots.", accent: "text-teal-400", bg: "bg-teal-400/10" },
+                          { icon: Wind, title: "Kiteboarding", desc: "The Washout is one of the East Coast's best kite spots. Steady onshore winds and a sandy bottom. Watch the locals rip or take a lesson yourself.", accent: "text-emerald-400", bg: "bg-emerald-400/10" },
+                          { icon: Music, title: "Live Music & Nightlife", desc: "Bars up and down the island have live bands most nights. Reggae, country, rock — whatever the vibe, someone's playing it. Just follow the sound.", accent: "text-purple-400", bg: "bg-purple-400/10" },
+                          { icon: Sailboat, title: "Boat Trips & Sailing", desc: "Sunset sails, dolphin cruises, sandbar trips. Get on the water and see the island from a different angle — especially at golden hour.", accent: "text-indigo-400", bg: "bg-indigo-400/10" },
                         ].map(item => (
                           <div key={item.title} className="bg-black/20 border border-border rounded-xl p-4 flex gap-3 items-start hover:bg-white/[0.04] transition-colors">
                             <div className={`w-9 h-9 rounded-lg ${item.bg} flex items-center justify-center shrink-0`}>
@@ -379,14 +381,16 @@ export default function Home() {
                         <div className="w-7 h-7 rounded-lg bg-sky-500/20 flex items-center justify-center">
                           <Sunrise className="w-4 h-4 text-sky-400" />
                         </div>
-                        <h3 className="text-base font-bold text-white">Chills</h3>
+                        <h3 className="text-base font-bold text-white">Slow It Down</h3>
                       </div>
                       <div className="space-y-2.5">
                         {[
-                          { icon: Compass, title: "Morris Island Lighthouse", desc: "Get an up-close view of the legendary lighthouse — tallest in South Carolina, built just after the Civil War. The setting makes for insta-worthy photos.", accent: "text-amber-400", bg: "bg-amber-400/10" },
-                          { icon: Shell, title: "Shell Finding & Dolphin Tours", desc: "A breathtaking nature cruise with guaranteed Atlantic bottlenose dolphin sightings. Your captain shares fascinating info about our native sea life.", accent: "text-pink-400", bg: "bg-pink-400/10" },
-                          { icon: Anchor, title: "Folly Beach Pier", desc: "Our iconic 1,000-foot pier provides plenty of dramatic oceanfront views — the ideal spot for snapping a selfie!", accent: "text-sky-400", bg: "bg-sky-400/10" },
-                          { icon: Sailboat, title: "Day & Sunset Sailing Charters", desc: "An intimate sailing trip to relax and recharge. Adventurous afternoon rides or unwind beneath a pink-and-purple sky on a sunset sail.", accent: "text-indigo-400", bg: "bg-indigo-400/10" }
+                          { icon: Sunrise, title: "Sunrise & Sunset", desc: "East-facing beach means stunning sunrises over the Atlantic. Sunsets paint the marsh side gold. Either way, bring something to drink.", accent: "text-amber-400", bg: "bg-amber-400/10" },
+                          { icon: Shell, title: "Shelling & Tide Pools", desc: "Low tide exposes sand dollars, whelks, and tiny crabs. Best finds are at the south end near the lighthouse — go early before everyone else.", accent: "text-pink-400", bg: "bg-pink-400/10" },
+                          { icon: Eye, title: "Dolphin Watching", desc: "Atlantic bottlenose dolphins cruise the shoreline every day. Stand on the pier or just sit in the sand — they'll find you.", accent: "text-sky-400", bg: "bg-sky-400/10" },
+                          { icon: Compass, title: "Morris Island Lighthouse", desc: "Iconic lighthouse at the south end of the island. Wade out at low tide to get close, or just enjoy the view. One of the most photographed spots in SC.", accent: "text-amber-400", bg: "bg-amber-400/10" },
+                          { icon: Flame, title: "Beach Bonfires", desc: "Permitted on the beach after dark. Bring some wood, a speaker, and good company. Stars over the ocean hit different.", accent: "text-orange-400", bg: "bg-orange-400/10" },
+                          { icon: Star, title: "Stargazing", desc: "Less light pollution than Charleston means actual stars. New moon nights are insane — you can see the Milky Way from the south end.", accent: "text-violet-400", bg: "bg-violet-400/10" },
                         ].map(item => (
                           <div key={item.title} className="bg-black/20 border border-border rounded-xl p-4 flex gap-3 items-start hover:bg-white/[0.04] transition-colors">
                             <div className={`w-9 h-9 rounded-lg ${item.bg} flex items-center justify-center shrink-0`}>
@@ -400,41 +404,101 @@ export default function Home() {
                         ))}
                       </div>
                     </div>
+
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-7 h-7 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                          <Sparkles className="w-4 h-4 text-emerald-400" />
+                        </div>
+                        <h3 className="text-base font-bold text-white">Free Stuff</h3>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        {[
+                          "Walk the pier at sunrise",
+                          "Watch surfers at The Washout",
+                          "Explore tide pools at low tide",
+                          "Spot dolphins from shore",
+                          "Collect shells at the south end",
+                          "Watch pelicans dive-bomb fish",
+                          "Read a book in the sand",
+                          "Skip stones on the flat side",
+                        ].map(item => (
+                          <div key={item} className="bg-black/20 border border-border rounded-lg px-3 py-2.5 text-xs text-white/80 font-medium">
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 )}
 
                 {activePanel === "folly" && (
-                  <div className="space-y-3 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <a href="https://www.google.com/maps?q=Folly+Beach+Pier" target="_blank" rel="noopener noreferrer" className="block bg-black/20 border border-border rounded-xl p-4 hover:bg-white/5 transition-colors" data-testid="link-folly-pier">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="font-bold text-[15px] text-white">Folly Beach Pier</div>
-                          <div className="text-sm text-muted-foreground mt-1">Iconic 1,000-foot pier with dramatic ocean views</div>
+                  <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      A 6-mile barrier island 20 minutes from downtown Charleston. Laid-back, a little wild, and nothing like the rest of the coast.
+                    </p>
+
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-7 h-7 rounded-lg bg-primary/20 flex items-center justify-center">
+                          <MapPin className="w-4 h-4 text-primary" />
                         </div>
-                        <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                        <h3 className="text-base font-bold text-white">Spots to Hit</h3>
                       </div>
-                    </a>
-                    <a href="https://www.google.com/maps?q=Center+Street+Folly+Beach" target="_blank" rel="noopener noreferrer" className="block bg-black/20 border border-border rounded-xl p-4 hover:bg-white/5 transition-colors" data-testid="link-folly-center">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="font-bold text-[15px] text-white">Center Street</div>
-                          <div className="text-sm text-muted-foreground mt-1">Shops, food, nightlife</div>
+                      <div className="space-y-2.5">
+                        {[
+                          { title: "The Pier", desc: "1,045 feet of concrete over the Atlantic. Fish off it, walk it at sunrise, or just lean on the railing and zone out. The view at the end is worth the walk.", emoji: "🌊", query: "Folly+Beach+Pier" },
+                          { title: "The Washout", desc: "Where the surfers are. Consistent break, strong currents, and a vibe that feels more California than Carolina. Even if you don't surf, it's worth watching.", emoji: "🏄", query: "The+Washout+Folly+Beach" },
+                          { title: "Morris Island", desc: "South end of the island. Walk past the houses, cross the inlet at low tide, and you'll find an empty beach with a lighthouse standing in the water. Unreal.", emoji: "🏝️", query: "Morris+Island+Lighthouse+Folly+Beach" },
+                          { title: "Folly River & Marsh Side", desc: "The calm side of the island. Kayak the creeks, watch herons stalk the shallows, or just sit on a dock and let the creek do its thing.", emoji: "🦀", query: "Folly+River+Folly+Beach" },
+                          { title: "Center Street", desc: "Main drag. Everything you need within a few blocks — food, drinks, surf shops, live music, and people-watching. Busiest on weekends.", emoji: "🎶", query: "Center+Street+Folly+Beach" },
+                          { title: "Folly Beach County Park", desc: "South end. Lifeguards, showers, parking, and a calmer stretch of sand. Good for families or anyone who wants actual amenities.", emoji: "🏖️", query: "Folly+Beach+County+Park" },
+                          { title: "The Sandbar at Low Tide", desc: "At low tide, a sandbar appears off the south end. Walk out to it and you're standing in the middle of the ocean on dry sand. Check tide times.", emoji: "🐚", query: "Folly+Beach+south+end" },
+                        ].map(spot => (
+                          <a
+                            key={spot.title}
+                            href={`https://www.google.com/maps?q=${spot.query}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block bg-black/20 border border-border rounded-xl p-4 hover:bg-white/[0.06] transition-colors"
+                            data-testid={`link-folly-${spot.title.toLowerCase().replace(/\s+/g, '-')}`}
+                          >
+                            <div className="flex gap-3 items-start">
+                              <span className="text-xl mt-0.5">{spot.emoji}</span>
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center justify-between">
+                                  <div className="font-bold text-[15px] text-white">{spot.title}</div>
+                                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground shrink-0 ml-2" />
+                                </div>
+                                <div className="text-sm text-muted-foreground mt-1 leading-relaxed">{spot.desc}</div>
+                              </div>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-7 h-7 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                          <Sparkles className="w-4 h-4 text-amber-400" />
                         </div>
-                        <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                        <h3 className="text-base font-bold text-white">Good to Know</h3>
                       </div>
-                    </a>
-                    <a href="https://www.google.com/maps?q=Morris+Island+Lighthouse+Folly+Beach" target="_blank" rel="noopener noreferrer" className="block bg-black/20 border border-border rounded-xl p-4 hover:bg-white/5 transition-colors" data-testid="link-folly-lighthouse">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="font-bold text-[15px] text-white">Morris Island Lighthouse</div>
-                          <div className="text-sm text-muted-foreground mt-1">Tallest lighthouse in SC — insta-worthy views</div>
-                        </div>
-                        <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                      <div className="space-y-2">
+                        {[
+                          { label: "Parking", detail: "Metered along the main roads, free if you walk a few blocks. County park has a flat lot fee." },
+                          { label: "Water", detail: "Ocean temp ranges from ~58°F in winter to ~82°F in summer. Rip currents are real — swim near lifeguards." },
+                          { label: "Tides", detail: "Big tidal swing here. Low tide exposes the sandbar and tide pools. High tide pushes the waterline up. Check times before you go." },
+                          { label: "Wildlife", detail: "Dolphins daily, sea turtles nest May–October, pelicans everywhere. Loggerhead turtle nesting sites are roped off — respect them." },
+                          { label: "Vibe", detail: "Folly is the anti-resort. Flip flops, no dress code, dogs on the beach before 10am and after 6pm. Keep it weird." },
+                        ].map(tip => (
+                          <div key={tip.label} className="bg-black/20 border border-border rounded-xl p-3.5">
+                            <div className="font-bold text-sm text-white">{tip.label}</div>
+                            <div className="text-xs text-muted-foreground mt-1 leading-relaxed">{tip.detail}</div>
+                          </div>
+                        ))}
                       </div>
-                    </a>
-                    <div className="bg-black/20 border border-border rounded-xl p-4">
-                      <div className="font-bold text-[15px] text-white">Sunrise / Sunset</div>
-                      <div className="text-sm text-muted-foreground mt-1">Sunrise: quiet beach stretch. Sunset: grab a drink and enjoy an unforgettable ocean view.</div>
                     </div>
                   </div>
                 )}
